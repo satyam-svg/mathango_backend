@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathango API Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen p-4">
+  <div class="max-w-5xl mx-auto py-12">
+    <!-- Header -->
+    <header class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold text-indigo-800 mb-4">
+        Mathango API Documentation
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Powerful educational content API for developers
+      </p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- API Endpoint Card -->
+        <div class="bg-indigo-50 rounded-xl p-6 border border-indigo-200">
+          <h2 class="text-2xl font-semibold text-indigo-700 mb-4">
+            Filter Chapters
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-medium text-gray-700">Endpoint</h3>
+              <code class="bg-gray-800 text-green-300 p-2 rounded block overflow-x-auto">
+                GET {{base_url}}/api/v1/chapters
+              </code>
+            </div>
+            
+            <div>
+              <h3 class="font-medium text-gray-700">Parameters</h3>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><span class="font-mono">page</span> (current page)</li>
+                <li><span class="font-mono">limit</span> (items per page)</li>
+                <li><span class="font-mono">status</span> (e.g., "Not Started")</li>
+                <li><span class="font-mono">isWeakChapter</span> (true/false)</li>
+                <li><span class="font-mono">subject</span> (e.g., "Physics")</li>
+                <li><span class="font-mono">class</span> (e.g., "Class 11")</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="font-medium text-gray-700">Example</h3>
+              <a href="/api/v1/chapters?page=1&limit=30&status=Not+Started&isWeakChapter=true&subject=Physics&class=Class+11"
+                 class="text-indigo-600 hover:underline block truncate">
+                {{base_url}}/api/v1/chapters?page=1&limit=30&status=Not+Started&isWeakChapter=true&subject=Physics&class=Class+11
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Chapter Card -->
+        <div class="bg-indigo-50 rounded-xl p-6 border border-indigo-200">
+          <h2 class="text-2xl font-semibold text-indigo-700 mb-4">
+            Get Chapter by ID
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-medium text-gray-700">Endpoint</h3>
+              <code class="bg-gray-800 text-green-300 p-2 rounded block overflow-x-auto">
+                GET {{base_url}}/api/v1/chapters/:id
+              </code>
+            </div>
+            
+            <div>
+              <h3 class="font-medium text-gray-700">Example</h3>
+              <a href="/api/v1/chapters/68405235d4f676494ee4fa77"
+                 class="text-indigo-600 hover:underline block truncate">
+                {{base_url}}/api/v1/chapters/68405235d4f676494ee4fa77
+              </a>
+            </div>
+            
+            <div class="pt-4">
+              <h3 class="font-medium text-gray-700 mb-2">Try It</h3>
+              <div class="flex">
+                <input type="text" 
+                       id="chapterId" 
+                       placeholder="Enter Chapter ID"
+                       class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none">
+                <button onclick="testEndpoint()"
+                        class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700">
+                  Test
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Postman Collection Card -->
+        <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+          <div class="flex items-center mb-4">
+            <i class="fab fa-postman text-amber-600 text-3xl mr-3"></i>
+            <h2 class="text-2xl font-semibold text-amber-700">
+              Postman Collection
+            </h2>
+          </div>
+          
+          <div class="space-y-4">
+            <p class="text-gray-700">
+              Full API documentation with ready-to-use examples and test environment
+            </p>
+            
+            <div class="bg-gray-800 rounded-lg p-4">
+              <div class="flex items-center text-amber-300">
+                <i class="fas fa-book-open mr-2"></i>
+                <span class="font-medium">Documentation:</span>
+              </div>
+              <a href="https://documenter.getpostman.com/view/30261377/2sB2qi9JHW" 
+                 target="_blank"
+                 class="text-amber-200 hover:text-white block truncate mt-2">
+                https://documenter.getpostman.com/view/30261377/2sB2qi9JHW
+              </a>
+            </div>
+            
+            <a href="https://documenter.getpostman.com/view/30261377/2sB2qi9JHW" 
+               target="_blank"
+               class="inline-flex items-center justify-center w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 px-4 rounded-lg transition">
+              <i class="fab fa-postman mr-2"></i>
+              Open Postman Collection
+            </a>
+            
+            <div class="pt-2 text-sm text-gray-600">
+              <i class="fas fa-lightbulb text-amber-500 mr-1"></i>
+              Import into Postman to test all endpoints
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Resources -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 mb-12">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">API Usage Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-key text-blue-500 mr-2"></i>
+            <h3 class="font-medium">Authentication</h3>
+          </div>
+          <p class="text-sm text-gray-600">No authentication required for public endpoints</p>
+        </div>
+        
+        <div class="bg-green-50 p-4 rounded-lg">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-code text-green-500 mr-2"></i>
+            <h3 class="font-medium">Response Format</h3>
+          </div>
+          <p class="text-sm text-gray-600">All responses in JSON format</p>
+        </div>
+        
+        <div class="bg-purple-50 p-4 rounded-lg">
+          <div class="flex items-center mb-2">
+            <i class="fas fa-bolt text-purple-500 mr-2"></i>
+            <h3 class="font-medium">Rate Limiting</h3>
+          </div>
+          <p class="text-sm text-gray-600">100 requests/minute per IP</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-600">
+      <p>© 2023-2025 Mathango API | All rights reserved</p>
+      <p class="text-sm mt-2">
+        <i class="fas fa-server mr-1"></i> API Status: 
+        <span class="text-green-600 font-medium">Operational</span>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function testEndpoint() {
+      const id = document.getElementById('chapterId').value;
+      if(id) {
+        window.location.href = `/api/v1/chapters/${id}`;
+      } else {
+        alert('Please enter a Chapter ID');
+      }
+    }
+  </script>
+</body>
+</html>
