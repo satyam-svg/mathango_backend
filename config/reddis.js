@@ -2,7 +2,7 @@
 import { createClient } from 'redis';
 
 const client = createClient({
-  url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
+  url: process.env.REDIS_URL,
 });
 
 client.on('error', (err) => {
@@ -13,7 +13,7 @@ await client.connect();
 
 export default {
   get: (...args) => client.get(...args),
-  set: (...args) => client.set(...args), // Add this line
+  set: (...args) => client.set(...args),
   setEx: (...args) => client.setEx(...args),
   del: (...args) => client.del(...args),
   incr: (...args) => client.incr(...args),
